@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import List from './components/List'
 
 class App extends Component {
-  render() {
+  state = { data: [], baseUrl: 'http://localhost:3000/mens'}
+
+  componentDidMount() {
+    fetch(this.state.baseUrl)
+      .then(response => response.json())
+      .then(data => this.setState({ data: data }))
+  }
+
+  render() {    
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">FEF Concepts</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <List sunglasses={this.state.data} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
