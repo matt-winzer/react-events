@@ -1,9 +1,16 @@
 import React from 'react'
 
 const Card = (props) => {
+  const sunglass = props.sunglass
+  console.log(sunglass);
+  
 
   return (
-    <h1>Hi from the Card!</h1>
+    <div className='card'>
+      <h2>{sunglass.model}</h2>
+      <img className='sunglass-image' src={sunglass.image} alt=""/>
+      <p>{sunglass.description}</p>
+    </div>
   )
 }
 
