@@ -1,10 +1,19 @@
 import React from 'react'
+import Card from './Card'
 
 const List = (props) => {
-  console.log(props);
-  
+  let cards
+  if (props.sunglasses) {
+    cards = props.sunglasses.map(sunglass => {
+      return <Card key={sunglass._id} sunglass={sunglass} />
+    })
+  }
+
   return (
-    <h1>Hi from the List!</h1>
+    <div>
+      <h1>Hi from the List!</h1>
+      {cards}
+    </div>
   )
 }
 
